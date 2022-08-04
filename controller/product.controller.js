@@ -27,4 +27,9 @@ const CreateProduct = async(req, res)=>{
     }
 }
 
-module.exports = {CreateProduct}
+const GetProducts = async(req, res)=>{
+    const products = await prisma.product.findMany();
+    res.status(200).json({title:"success", message:"products", data:products})
+};
+
+module.exports = {CreateProduct, GetProducts}
