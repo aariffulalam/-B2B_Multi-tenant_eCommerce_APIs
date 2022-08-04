@@ -11,11 +11,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
 app.get('/', async (req, res, next) => {
-  res.send({ message: 'Awesome it works 🐻' });
+  res.send({ message: 'Awesome it works 🐻', config });
 });
 
 app.use('/user', require('./routes/user.route'));
 app.use('/product', require('./routes/product.route'))
+app.use('/order', require('./routes/order.route'))
 
 app.use((req, res, next) => {
   next(createError.NotFound());

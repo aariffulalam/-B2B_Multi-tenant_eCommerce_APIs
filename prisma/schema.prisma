@@ -44,10 +44,12 @@ model User{
 
 model Order{
   id Int @id @default(autoincrement())
+  quantity String
+  price String
   product Product @relation(fields: [productId], references: [id])
   productId Int
   user User @relation(fields: [userId], references: [id])
   userId Int
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
